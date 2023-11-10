@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <title>Galeria de imagenes</title>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Subir y Mostrar Imágenes</h1>
+
+        <form id="formularioImagen">
+            <label for="titulo">Título:</label>
+            <input type="text" id="titulo" name="titulo" required>
+
+            <label for="descripcion">Descripción:</label>
+            <textarea id="descripcion" name="descripcion"></textarea>
+
+            <label for="urlImagen">URL de la Imagen:</label>
+            <input type="text" id="urlImagen" name="urlImagen" required>
+            <br><br>
+            <button type="button" id="btn-subir">Subir Imagen</button> 
+            
+
+            
+        </form>
+
+    </div>
+
+
+    <div id="imagenes-container" class="row">
+        <!-- Acá se muestran las imagenes -->
+    </div>
+
+
+    
+
+    <script>
+
+        const btnSubir = document.getElementById('btn-subir')
+        const btnEliminar = document.getElementById('btn-eliminar')
+        let conteinerImage = document.getElementById('imagenes-container')
+
+
+        const getData = (key)=>{
+            const res = JSON.parse(localStorage.getItem(key))
+
+            return res ? res : []
+        }
+
+        const setData = (key, arr)=>{
+            localStorage.setItem(key, JSON.stringify(arr))
+        }
+
+
+        btnSubir.addEventListener('click', () =>{
+            const titulo = document.getElementById('titulo').value
+            const descripcion = document.getElementById('descripcion').value
+            const url = document.getElementById('urlImagen').value
+            
+
+            const newItem = {
+                tit: titulo,
+                desc: descripcion,
+                urlimg: url
+            }
+
+            const items = getData('itemsData')
+            items.push(newItem)
+            setData('itemsData',items)
+
+            document.getElementById('titulo').value = '';
+            document.getElementById('descripcion').value = '';
+            document.getElementById('urlImagen').value = '';
+            
+            mostrarImagenes();
+        })
+       
+
+        window.addEventListener('load', () =>{
+            mostrarImagenes();
+        })
+
+        function mostrarImagenes() {
+            const items = getData('itemsData');
+            conteinerImage.innerHTML = '';
+
+            items.forEach(e => {
+                const card = document.createElement('div');
+                card.className = 'col-md-4 mb-4';
+                
+
+                card.innerHTML = `
+                <div class="card">
+                        <img src="${e.urlimg}" class="card-img-top" alt="${e.tit}">
+                        <div class="card-body">
+                            <h5 class="card-title">${e.tit}</h5>
+                            <p class="card-text">${e.desc}</p>
+                            <button class="btn btn-danger">Eliminar</button>
+                        </div>
+                    </div>
+                `;
+
+                conteinerImage.appendChild(card);
+            });
+        }
+    
+    </script>
+</body>
+</html>

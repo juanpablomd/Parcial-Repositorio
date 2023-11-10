@@ -1,0 +1,77 @@
+* {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+  
+  
+  .container{
+    background-color: gray;
+    width: 400px;
+    padding: 30px;
+    margin-left: 150px;
+    margin-top: 50px;
+    color: white;
+    font-size: 18px;
+    box-shadow: 8px 10px 5px 0px rgba(0, 0, 0, 0.75);
+    -webkit-box-shadow: 8px 10px 5px 0px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 8px 10px 5px 0px rgba(0, 0, 0, 0.75);
+  }
+
+
+  #descripcion{
+    width: 200px;
+    height: 40px;
+    
+  }
+  #titulo{
+    width: 200px;
+    height: 30px;
+  }
+
+  #btn-subir{
+    margin: 10px;
+    padding: 5px;
+    border-radius: 5px;
+    color: white;
+    background-color: royalblue;
+  }
+
+  #btn-subir:hover{
+    background-color: rgb(3, 83, 187);
+  }
+  
+
+
+  .card{
+    margin: 20px;
+    justify-content: space-between;
+    background-color: bisque;
+    border-radius: 20px;
+  }
+
+  .row{
+    padding: 20px;
+    margin: 20px;
+    color: black;
+    border-radius: 20px;
+  }
+
+  .card-img-top{
+    box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+    -webkit-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+
+    border-radius: 10px 10px 10px 10px;
+    -webkit-border-radius: 10px 10px 10px 10px;
+    -moz-border-radius: 10px 10px 10px 10px;
+  }
+
+
+  .card-body{
+    background-color: #e7dadacb;
+    margin: 9px;
+    
+
+  }
